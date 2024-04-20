@@ -13,5 +13,11 @@ EditorBuildSettings:
     guid: b9769a477cb4f35459acf579efb16733
   - enabled: 1
     path: Assets/Level 2.unity
-    guid: 727b26704f6d1364fa32740662609f73
+    guid: 667f9809fa48d814a94705f9cabd6695
+  - enabled: 1
+    path: Assets/Level 3.unity
+    guid: 666ff02724a29ba43bbf2269cd8b1e89
+  - enabled: 1
+    path: Assets/Victory.unity
+    guid: 11ced807ab4887900b933abbfc506394
   m_configObjects: {}
