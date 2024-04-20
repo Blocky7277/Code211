@@ -15,4 +15,10 @@ public class GravityFlipper : MonoBehaviour
     {
         
     }
+
+    void FixedUpdate(){
+        if (Input.GetKeyDown(KeyCode.Q)){
+            Physics2D.gravity = new Vector2(0, 20);
+        }
+    }
 }
