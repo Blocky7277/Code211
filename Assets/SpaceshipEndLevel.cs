@@ -12,13 +12,14 @@ public class SpaceshipEndLevel : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if(triggered) {
+            transform.position += new Vector3(0, .1f, 0);
+        }
     }
 
         void OnTriggerEnter2D (Collider2D obj) {
         GameObject o = obj.gameObject;
         if(o.tag == "Player" && !triggered) {
-            triggered = true;
             m = o.GetComponent<Movement>();
             m.finished = true;
             if(o.transform.position.x-10 > transform.position.x) {
@@ -35,5 +36,7 @@ public class SpaceshipEndLevel : MonoBehaviour
         yield return new WaitForSeconds(.7f);
         if(!o.GetComponent<Movement>().isGrounded) yield return new WaitForSeconds(1.3f);
         o.GetComponent<Renderer>().enabled = false;
+        triggered = true;
+
     }
 }
