@@ -6,6 +6,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public bool finished = false;
+
+    public bool immobile = false;
     public float jumpForce = 2f;
 
     public float mvtSpeed = .5f;
@@ -17,6 +19,8 @@ public class Movement : MonoBehaviour
     private readonly int playerSpeedID = Animator.StringToHash("PlayerSpeed");
 	private readonly int onGroundID = Animator.StringToHash("OnGround");
 	private readonly int hurtID = Animator.StringToHash("Hurt");
+
+    public bool canFlip = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,7 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if(!finished) {
+        if(!finished && !immobile) {
             if(Input.GetKey("space") && isGrounded) {
                 rb.velocity += new Vector2(0, jumpForce) * Time.deltaTime * 100;
             }
@@ -49,9 +53,10 @@ public class Movement : MonoBehaviour
                 moveRight();
             }
 
-            if (Input.GetKey("q") && isGrounded){
+            if (Input.GetKey("q") && canFlip){
                 playerAnimator.Play("Hurt", 0, 0.5f);
                 GetComponent<Rigidbody2D>().gravityScale *= -1;
+                canFlip = false;
                 FlipPlayerV();
             }
         }
@@ -87,16 +92,4 @@ public class Movement : MonoBehaviour
 		transform.Rotate(xAngle: 180f, 0f, 0f);
         jumpForce *= -1;
 	}
-
-    void OnCollisionStay2D(Collision2D obj) {
-            if (obj.gameObject.layer == 3) {
-                isGrounded = true;
-            }
-    }
-
-    void OnCollisionExit2D(Collision2D obj) {
-            if (obj.gameObject.layer == 3) {
-                isGrounded = false;
-            }
-    }
 }

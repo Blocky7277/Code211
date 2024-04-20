@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class SpaceshipEndLevel : MonoBehaviour
@@ -12,26 +13,21 @@ public class SpaceshipEndLevel : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if(triggered) {
+            transform.position += new Vector3(0, .1f, 0);
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D obj) {
+        void OnTriggerEnter2D (Collider2D obj) {
         GameObject o = obj.gameObject;
         if(o.tag == "Player" && !triggered) {
-            triggered = true;
             m = o.GetComponent<Movement>();
             m.finished = true;
             if(o.transform.position.x-10 > transform.position.x) {
-                for (int i = 0; i < 20; i++)
-                {
-                    m.moveLeft();  
-                }
+                m.moveRight();
             }
             else {
-                for (int i = 0; i < 20; i++)
-                {
-                    m.moveRight();  
-                }
+                m.moveLeft();
             }
             StartCoroutine(End(o));
             
@@ -41,5 +37,11 @@ public class SpaceshipEndLevel : MonoBehaviour
         yield return new WaitForSeconds(.7f);
         if(!o.GetComponent<Movement>().isGrounded) yield return new WaitForSeconds(1.3f);
         o.GetComponent<Renderer>().enabled = false;
+        triggered = true;
+    }
+
+    IEnumerator NextLevel(Scene s) {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(s.name);
     }
 }
