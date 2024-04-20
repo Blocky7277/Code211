@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class SpaceshipEndLevel : MonoBehaviour
 {
     private bool triggered = false;
@@ -15,9 +16,23 @@ public class SpaceshipEndLevel : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D obj) {
-        if(obj.gameObject.tag == "Player") {
-            m = obj.gameObject.GetComponent<Movement>();
+        GameObject o = obj.gameObject;
+        if(o.tag == "Player" && !triggered) {
+            triggered = true;
+            m = o.GetComponent<Movement>();
             m.finished = true;
+            if(o.transform.position.x-10 < transform.position.x) {
+                m.moveLeft();
+            }
+            else {
+                m.moveRight();
+            }
+            StartCoroutine(End(o));
+            
         }
+    }
+    IEnumerator End(GameObject o) {
+        yield return new WaitForSeconds(.7f);
+        o.SetActive(false);
     }
 }

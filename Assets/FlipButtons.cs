@@ -20,6 +20,7 @@ public class FlipButtons : MonoBehaviour
         if (obj.gameObject.tag == "Player") {            
             if (ticksLeft == -1) {
                 obj.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
+                ticksLeft = 60;
             }            
         }
     }
