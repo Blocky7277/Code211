@@ -16,7 +16,6 @@ public class Movement : MonoBehaviour
     private bool facingRight;
     private readonly int playerSpeedID = Animator.StringToHash("PlayerSpeed");
 	private readonly int onGroundID = Animator.StringToHash("OnGround");
-	private readonly int flipGravID = Animator.StringToHash("Hurt");
 	private readonly int hurtID = Animator.StringToHash("Hurt");
 
     // Start is called before the first frame update
@@ -43,25 +42,11 @@ public class Movement : MonoBehaviour
                 rb.velocity += new Vector2(0, jumpForce) * Time.deltaTime * 100;
             }
             if(Input.GetKey("a") && rb.velocity.x > -5) {
-                // if(!isGrounded && rb.velocity.x > 0) {
-                //     rb.velocity = new(0, rb.velocity.y);
-                // }
-                rb.velocity += new Vector2(-mvtSpeed, 0) * Time.deltaTime * 100;
-                if (facingRight)
-                {
-                    FlipPlayerH();
-                }
+                moveLeft();
             }
             
             if(Input.GetKey("d") && rb.velocity.x < 5) {
-                // if(!isGrounded && rb.velocity.x <  0) {
-                //     rb.velocity = new(0, rb.velocity.y);
-                // }
-                rb.velocity += new Vector2(mvtSpeed, 0) * Time.deltaTime * 100;
-                if (!facingRight)
-                {
-                    FlipPlayerH();
-                }
+                moveRight();
             }
 
             if (Input.GetKey("q") && isGrounded){
@@ -75,6 +60,22 @@ public class Movement : MonoBehaviour
 
     public void defeatPlayer(){
         playerAnimator.SetTrigger(hurtID);
+    }
+
+    public void moveLeft() {
+        rb.velocity += new Vector2(-mvtSpeed, 0) * Time.deltaTime * 100;
+                if (facingRight)
+                {
+                    FlipPlayerH();
+                }
+    }
+
+    public void moveRight() {
+        rb.velocity += new Vector2(mvtSpeed, 0) * Time.deltaTime * 100;
+            if (!facingRight)
+            {
+                FlipPlayerH();
+            }
     }
     private void FlipPlayerH()
 	{
