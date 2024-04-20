@@ -15,23 +15,17 @@ public class SpaceshipEndLevel : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D obj) {
+        void OnTriggerEnter2D (Collider2D obj) {
         GameObject o = obj.gameObject;
         if(o.tag == "Player" && !triggered) {
             triggered = true;
             m = o.GetComponent<Movement>();
             m.finished = true;
             if(o.transform.position.x-10 > transform.position.x) {
-                for (int i = 0; i < 20; i++)
-                {
-                    m.moveLeft();  
-                }
+                m.moveRight();
             }
             else {
-                for (int i = 0; i < 20; i++)
-                {
-                    m.moveRight();  
-                }
+                m.moveLeft();
             }
             StartCoroutine(End(o));
             
