@@ -63,11 +63,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)){
-            GetComponent<Rigidbody2D>().gravityScale *= -1;
-            FlipPlayerV();
-        }
-        if (Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKey("q") && isGrounded){
             GetComponent<Rigidbody2D>().gravityScale *= -1;
             FlipPlayerV();
         }
