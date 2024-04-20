@@ -19,7 +19,7 @@ public class FlipButtons : MonoBehaviour
     void OnCollisionStay2D(Collision2D obj) {
         if (obj.gameObject.tag == "Player") {            
             if (ticksLeft == -1) {
-                obj.GetComponent<Rigidbody2D>().gravityScale *= -1;
+                obj.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
             }            
         }
     }
