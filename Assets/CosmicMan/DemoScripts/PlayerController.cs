@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
 	{
 		facingRight = !facingRight; // FacingRight becomes the opposite of the current value.
 		transform.Rotate(0f, 180f, 0f);
+		GetComponentInChildren<Transform>().transform.forward = transform.forward * -1;
 	}
 
 	private void Shoot()

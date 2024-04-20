@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class GravityFlipper : MonoBehaviour
@@ -18,7 +19,10 @@ public class GravityFlipper : MonoBehaviour
 
     void FixedUpdate(){
         if (Input.GetKeyDown(KeyCode.Q)){
-            Physics2D.gravity = new Vector2(0, 20);
+            GetComponent<Rigidbody2D>().gravityScale *= -1;
+        }
+        if (Input.GetKeyDown(KeyCode.E)){
+            GetComponent<Rigidbody2D>().gravityScale *= -1;
         }
     }
 }
