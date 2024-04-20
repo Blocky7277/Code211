@@ -75,10 +75,10 @@ GameObject:
   - component: {fileID: 84375708964620877}
   - component: {fileID: 6906534958625099670}
   - component: {fileID: 775876643186332869}
-  - component: {fileID: 2478074952175327727}
+  - component: {fileID: -232010202055130153}
   m_Layer: 0
   m_Name: CosmicMan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2478074952175327727
+--- !u!114 &-232010202055130153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,19 +254,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3756210532390162142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c54547750069074e86b13b103a335a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f2dc074d9119514c995a357e38c0fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  jumpingSpeed: 5
-  shootingPoint: {fileID: 5528074744876943543}
-  bulletObject: {fileID: 232917027881927301, guid: 4d48fdec0d0e79841bb2fa51d0748e1a, type: 3}
-  blackHoleObject: {fileID: 0}
-  hurtCounter: 0.25
-  shootingCounter: 0.2
-  groundCheck: {fileID: 3099754007170389558}
-  groundCheckRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  bulletsAmount: 15
+  jumpForce: 2.5
+  mvtSpeed: 0.5
+  isGrounded: 0
+  rb: {fileID: 0}

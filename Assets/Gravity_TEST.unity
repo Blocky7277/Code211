@@ -546,6 +546,14 @@ PrefabInstance:
       value: CosmicMan
       objectReference: {fileID: 0}
     - target: {fileID: 2332906237655711289, guid: 67798236210cbf741bb85cd3ec94a217, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332906237655711289, guid: 67798236210cbf741bb85cd3ec94a217, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332906237655711289, guid: 67798236210cbf741bb85cd3ec94a217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.96
       objectReference: {fileID: 0}
