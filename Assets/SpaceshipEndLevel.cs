@@ -44,6 +44,8 @@ public class SpaceshipEndLevel : MonoBehaviour
 
     IEnumerator NextLevel() {
         yield return new WaitForSeconds(2.4f);
-        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
+        string levelName = SceneManager.GetActiveScene().name;
+        float levelNum = float.Parse(levelName.Substring(6)) + 1;
+        SceneManager.LoadScene("Level " + levelNum);
     }
 }

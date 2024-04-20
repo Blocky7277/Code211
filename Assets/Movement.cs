@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
                 FlipPlayerV();
             }
         }
-        
+        Debug.Log(immobile);
     }
 
     public void defeatPlayer(){
