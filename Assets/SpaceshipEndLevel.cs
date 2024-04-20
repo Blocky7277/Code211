@@ -21,11 +21,17 @@ public class SpaceshipEndLevel : MonoBehaviour
             triggered = true;
             m = o.GetComponent<Movement>();
             m.finished = true;
-            if(o.transform.position.x-10 < transform.position.x) {
-                m.moveLeft();
+            if(o.transform.position.x-10 > transform.position.x) {
+                for (int i = 0; i < 20; i++)
+                {
+                    m.moveLeft();  
+                }
             }
             else {
-                m.moveRight();
+                for (int i = 0; i < 20; i++)
+                {
+                    m.moveRight();  
+                }
             }
             StartCoroutine(End(o));
             
@@ -33,6 +39,7 @@ public class SpaceshipEndLevel : MonoBehaviour
     }
     IEnumerator End(GameObject o) {
         yield return new WaitForSeconds(.7f);
-        o.SetActive(false);
+        if(!o.GetComponent<Movement>().isGrounded) yield return new WaitForSeconds(1.3f);
+        o.GetComponent<Renderer>().enabled = false;
     }
 }
