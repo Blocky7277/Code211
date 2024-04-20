@@ -22,7 +22,7 @@ public class SlowGravityPowerup : MonoBehaviour
 
     IEnumerator Timer(Collider2D obj)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
         obj.gameObject.GetComponent<Rigidbody2D>().gravityScale *= 2f;
         Destroy(gameObject);
 
