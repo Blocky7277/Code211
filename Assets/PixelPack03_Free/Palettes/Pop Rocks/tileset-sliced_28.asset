@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tileset-sliced_28
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300056, guid: 1d9b5639919894ee7a71027660fcb933, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.023362402, g: 0.86132985, b: 0.990566, a: 1}
   m_Transform:
     e00: 1
     e01: 0

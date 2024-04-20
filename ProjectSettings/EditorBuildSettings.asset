@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Start Screen.unity
     guid: a3bbab54daec245198acc8243310b570
   - enabled: 1
+    path: Assets/Level 1.unity
+    guid: b9769a477cb4f35459acf579efb16733
+  - enabled: 1
     path: Assets/Level 2.unity
     guid: 727b26704f6d1364fa32740662609f73
   m_configObjects: {}
