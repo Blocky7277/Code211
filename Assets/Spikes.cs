@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Spikes : MonoBehaviour
 {
+    public Movement playerMovement;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -13,6 +14,7 @@ public class Spikes : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D obj) {
         if (obj.gameObject.tag == "Player") {
+            playerMovement.defeatPlayer();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     private bool facingRight;
     private readonly int playerSpeedID = Animator.StringToHash("PlayerSpeed");
 	private readonly int onGroundID = Animator.StringToHash("OnGround");
-	private readonly int teleporID = Animator.StringToHash("Teleport");
+	private readonly int flipGravID = Animator.StringToHash("Hurt");
 	private readonly int hurtID = Animator.StringToHash("Hurt");
 
     // Start is called before the first frame update
@@ -64,11 +64,15 @@ public class Movement : MonoBehaviour
         }
 
         if (Input.GetKey("q") && isGrounded){
+            playerAnimator.Play("Hurt", 0, 0.5f);
             GetComponent<Rigidbody2D>().gravityScale *= -1;
             FlipPlayerV();
         }
     }
 
+    public void defeatPlayer(){
+        playerAnimator.SetTrigger(hurtID);
+    }
     private void FlipPlayerH()
 	{
 		facingRight = !facingRight; // FacingRight becomes the opposite of the current value.
