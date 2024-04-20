@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public bool finished = false;
     public float jumpForce = 2f;
 
     public float mvtSpeed = .5f;
@@ -37,37 +38,39 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate() {
-        
-        if(Input.GetKey("space") && isGrounded) {
-            rb.velocity += new Vector2(0, jumpForce) * Time.deltaTime * 100;
-        }
-        if(Input.GetKey("a") && rb.velocity.x > -5) {
-            // if(!isGrounded && rb.velocity.x > 0) {
-            //     rb.velocity = new(0, rb.velocity.y);
-            // }
-            rb.velocity += new Vector2(-mvtSpeed, 0) * Time.deltaTime * 100;
-            if (facingRight)
-            {
-                FlipPlayerH();
+        if(!finished) {
+            if(Input.GetKey("space") && isGrounded) {
+                rb.velocity += new Vector2(0, jumpForce) * Time.deltaTime * 100;
             }
-        }
-        
-        if(Input.GetKey("d") && rb.velocity.x < 5) {
-            // if(!isGrounded && rb.velocity.x <  0) {
-            //     rb.velocity = new(0, rb.velocity.y);
-            // }
-            rb.velocity += new Vector2(mvtSpeed, 0) * Time.deltaTime * 100;
-            if (!facingRight)
-            {
-                FlipPlayerH();
+            if(Input.GetKey("a") && rb.velocity.x > -5) {
+                // if(!isGrounded && rb.velocity.x > 0) {
+                //     rb.velocity = new(0, rb.velocity.y);
+                // }
+                rb.velocity += new Vector2(-mvtSpeed, 0) * Time.deltaTime * 100;
+                if (facingRight)
+                {
+                    FlipPlayerH();
+                }
             }
-        }
+            
+            if(Input.GetKey("d") && rb.velocity.x < 5) {
+                // if(!isGrounded && rb.velocity.x <  0) {
+                //     rb.velocity = new(0, rb.velocity.y);
+                // }
+                rb.velocity += new Vector2(mvtSpeed, 0) * Time.deltaTime * 100;
+                if (!facingRight)
+                {
+                    FlipPlayerH();
+                }
+            }
 
-        if (Input.GetKey("q") && isGrounded){
-            playerAnimator.Play("Hurt", 0, 0.5f);
-            GetComponent<Rigidbody2D>().gravityScale *= -1;
-            FlipPlayerV();
+            if (Input.GetKey("q") && isGrounded){
+                playerAnimator.Play("Hurt", 0, 0.5f);
+                GetComponent<Rigidbody2D>().gravityScale *= -1;
+                FlipPlayerV();
+            }
         }
+        
     }
 
     public void defeatPlayer(){
