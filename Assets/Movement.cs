@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
 	private readonly int onGroundID = Animator.StringToHash("OnGround");
 	private readonly int hurtID = Animator.StringToHash("Hurt");
 
+    public bool canFlip = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,9 +51,10 @@ public class Movement : MonoBehaviour
                 moveRight();
             }
 
-            if (Input.GetKey("q") && isGrounded){
+            if (Input.GetKey("q") && canFlip){
                 playerAnimator.Play("Hurt", 0, 0.5f);
                 GetComponent<Rigidbody2D>().gravityScale *= -1;
+                canFlip = false;
                 FlipPlayerV();
             }
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatePowerUp : MonoBehaviour
+public class PowerUpFunctionality : MonoBehaviour
 {
     public Sprite sprite1;
     public Sprite sprite2;
@@ -51,6 +51,15 @@ public class AnimatePowerUp : MonoBehaviour
                 spriteRenderer.sprite = sprite7;
                 frameCount = 1;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D obj)
+    {
+        if (obj.gameObject.tag == "Player")
+        {
+            obj.gameObject.GetComponent<Movement>().canFlip = true;
+            Destroy(gameObject);
         }
     }
 }
