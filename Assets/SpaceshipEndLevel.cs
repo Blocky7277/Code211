@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class SpaceshipEndLevel : MonoBehaviour
@@ -37,6 +38,10 @@ public class SpaceshipEndLevel : MonoBehaviour
         if(!o.GetComponent<Movement>().isGrounded) yield return new WaitForSeconds(1.3f);
         o.GetComponent<Renderer>().enabled = false;
         triggered = true;
+    }
 
+    IEnumerator NextLevel(Scene s) {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(s.name);
     }
 }
