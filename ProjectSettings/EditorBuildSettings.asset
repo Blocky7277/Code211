@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Start Screen.unity
     guid: a3bbab54daec245198acc8243310b570
   - enabled: 1
-<<<<<<< HEAD
-    path: Assets/Level 1.unity
-    guid: b9769a477cb4f35459acf579efb16733
-  - enabled: 1
-=======
->>>>>>> parent of bff17b8 (Merge branch 'main' of https://github.com/Blocky7277/Code211)
     path: Assets/Level 2.unity
     guid: 727b26704f6d1364fa32740662609f73
   m_configObjects: {}
