@@ -46,6 +46,9 @@ public class SpaceshipEndLevel : MonoBehaviour
         yield return new WaitForSeconds(2.4f);
         string levelName = SceneManager.GetActiveScene().name;
         float levelNum = float.Parse(levelName.Substring(6)) + 1;
-        SceneManager.LoadScene("Level " + levelNum);
+        if (levelNum == 4){
+            SceneManager.LoadScene("Victory");
+        }
+        else {SceneManager.LoadScene("Level " + levelNum);}
     }
 }
