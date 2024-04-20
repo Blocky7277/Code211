@@ -6,18 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class SlowGravityPowerup : MonoBehaviour
 {
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
+    bool triggered = false;
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.tag == "Player")
+        if (obj.gameObject.tag == "Player" && !triggered)
         {
             obj.gameObject.GetComponent<Rigidbody2D>().gravityScale *= 0.5f;
-            Destroy(gameObject);
+            StartCoroutine(Timer(obj));
+            triggered = true;
+            GetComponent<Renderer>().enabled = false;
+
         }
+    }
+
+    IEnumerator Timer(Collider2D obj)
+    {
+        yield return new WaitForSeconds(5f);
+        obj.gameObject.GetComponent<Rigidbody2D>().gravityScale *= 2f;
+        Destroy(gameObject);
+
     }
 }
