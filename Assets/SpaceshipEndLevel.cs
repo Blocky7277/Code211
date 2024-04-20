@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SpaceshipEndLevel : MonoBehaviour
 {
     private bool triggered = false;
+    public int nextSceneIndex = 0;
 
     private Movement m;
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class SpaceshipEndLevel : MonoBehaviour
                 m.moveLeft();
             }
             StartCoroutine(End(o));
-            
+            StartCoroutine(NextLevel());
         }
     }
     IEnumerator End(GameObject o) {
@@ -38,10 +39,11 @@ public class SpaceshipEndLevel : MonoBehaviour
         if(!o.GetComponent<Movement>().isGrounded) yield return new WaitForSeconds(1.3f);
         o.GetComponent<Renderer>().enabled = false;
         triggered = true;
+        
     }
 
-    IEnumerator NextLevel(Scene s) {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(s.name);
+    IEnumerator NextLevel() {
+        yield return new WaitForSeconds(2.4f);
+        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
     }
 }
