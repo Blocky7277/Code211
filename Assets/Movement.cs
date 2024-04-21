@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class Movement : MonoBehaviour
             }
         }
         Debug.Log(immobile);
+        if (Input.GetKey("r")){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void defeatPlayer(){
