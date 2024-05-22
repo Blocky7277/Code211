@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Lazer : MonoBehaviour
@@ -23,6 +24,9 @@ public class Lazer : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D obj) {
-        if(GetComponent<Renderer>().enabled) obj.gameObject.GetComponent<Movement>().defeatPlayer();
+        if(GetComponent<Renderer>().enabled) {
+            obj.gameObject.GetComponent<Movement>().defeatPlayer();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
